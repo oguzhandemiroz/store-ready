@@ -2,8 +2,7 @@
 
 Claude Code tools for shipping mobile apps to the App Store and Google Play.
 
-https://github.com/user-attachments/assets/e7edb808-0557-4cfe-a258-dcb8a7f8a838
-
+https://github.com/user-attachments/assets/83bde746-f8e0-48e1-a1f8-735a526958ec
 
 | Tool | Type | What it does |
 |---|---|---|
