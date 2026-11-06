@@ -91,11 +91,8 @@ files describe intent; the binary is the truth.
 - **Hidden or switchable features:** no feature that is hidden from the
   reviewer, dormant, or turned on by remote config after approval. List every
   remote flag you find and what it controls.
-- **Minimum functionality and spam risk:** if the app is in a crowded
-  category (simple puzzle, flashlight, timer, tracker, wallpaper, detector,
-  dating, and so on) or is one of several similar apps from the same
-  developer, say what makes it distinct and check that the review notes and
-  first screenshots say it too. Template or white-label apps are high risk.
+- **Originality, copycat and spam:** run the "Originality" checks at the
+  end of this phase for every app, not only ones that look generic.
 - **System prompts:** permission and ATT prompts appear at a moment that
   makes sense, not stacked at launch and not over gameplay. A custom screen
   before a system prompt uses a neutral button ("Continue"), not "Allow", and
@@ -108,6 +105,60 @@ files describe intent; the binary is the truth.
   a real device (and an iPad, if supported) was tested on this exact build.
   If a simulator and build are available and the user agrees, you may launch
   it to look, but never sign in with real credentials.
+
+### Originality: copycat, minimum functionality and spam
+
+Copycat (4.1), minimum functionality (4.2) and spam (4.3) rejections are
+judgement calls, often made from the product page and the first minute of
+use, and they are slow to argue after the fact. Cite the numbers from the
+live guidelines page; when copying is in question, also read Apple's
+https://developer.apple.com/help/app-review/guideline-reference/4-1-prevent-copycat-rejection
+
+1. **Find the closest apps on the store.** Use Apple's public search API (no
+   key, read-only):
+   `https://itunes.apple.com/search?term=<words>&entity=software&country=<cc>&limit=25`.
+   Search with the app's name, its core mechanic or use in plain words
+   ("arrow puzzle", "hidden camera detector", "expense tracker"), and its
+   main keywords, in the app's primary storefront and in `us`. Each result
+   carries `trackName`, `sellerName`, `userRatingCount`, `description`,
+   `artworkUrl512` and `screenshotUrls`. Keep the 5 to 10 closest.
+2. **Copycat check (4.1).** Compare the app's name, subtitle, icon and first
+   screenshots with those apps, the large ones first.
+   - Another app's or brand's name, icon or trademark in the app's name or
+     icon: **BLOCKER**. In any other metadata field (subtitle, keywords,
+     description, IAP names, screenshots): **RISK**.
+   - A name that differs from a popular app's by a word, a suffix or word
+     order; an icon with the same subject, composition and colors;
+     screenshots that copy another app's layout: **RISK**.
+   - Search the repo, docs, commit messages and store copy for "clone",
+     "remake", "inspired by", "like <app>", "copy of". If the app recreates a
+     named game or app, mark **RISK** and ask the user what a player of the
+     original would see as different in the first minute.
+3. **Same-developer duplicates (4.3).** List the developer's other apps with
+   `https://itunes.apple.com/lookup?id=<artistId>&entity=software` (the
+   `artistId` comes from the app's own lookup, or ask). Two apps with the
+   same core and a different skin, theme, city or content set are a
+   **RISK**; the usual fix is one app with the variants inside it. Code from
+   a template, white-label kit or reskin (a template name in the source,
+   placeholder bundle ids, assets shared with another of the developer's
+   apps) raises the risk.
+4. **Crowded categories (4.3).** The live 4.3 text names categories Apple
+   treats as already saturated; read the current list there. Treat simple
+   puzzles, trackers, detectors, timers, wallpapers, soundboards and quiz
+   apps the same way. If the app is in one, write one sentence on what a
+   reviewer can see in the first minute that the closest apps from step 1
+   do not have. If you cannot write it from the build and the screenshots,
+   mark **RISK**.
+5. **Minimum functionality (4.2).** Not a wrapped website, not a single
+   screen, enough content for lasting use (a game with a handful of levels
+   is a risk). Note the level or content count you found.
+6. **Make the difference visible.** The difference from step 4 appears in
+   the review notes and in the first two screenshots. Draft the one or two
+   review-note sentences for the user.
+
+In the report, add a "Similar apps" table: name, seller, rating count, what
+matches this app, what differs. Most findings here are **RISK**, because a
+reviewer decides; never write that an app is safe from 4.1 or 4.3.
 
 ## Phase 5: Monetization
 

@@ -44,3 +44,7 @@ section so the project can learn from them.
     metadata finding even when they feel like marketing.
 18. Words banned by the project's own copy rules slip into one locale.
     Check all of them.
+19. A resubmission is a new review. An app rejected for one issue (an iPad
+    layout bug, a missing IAP) can come back with a 4.3 or a 2.1(b) it did
+    not get the first time. After a fix, rerun the whole audit, not only the
+    fixed item.

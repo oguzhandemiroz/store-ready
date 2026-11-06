@@ -43,8 +43,12 @@ errors.
   safety, iOS-only screens leaking into Android, closed testing for new
   accounts.
 - **Completeness:** every advertised feature exists, nothing says "coming
-  soon", demo account, hidden or remotely switchable features, spam risk in
-  crowded categories, permission prompt timing and wording.
+  soon", demo account, hidden or remotely switchable features, permission
+  prompt timing and wording.
+- **Originality (4.1, 4.2, 4.3):** searches the App Store for the closest
+  apps and your own catalog, then compares name, icon and screenshots for
+  copycat risk, flags duplicates and crowded categories, and drafts the
+  review note that explains what makes your app different.
 - **Monetization:** IAPs and subscriptions attached to the submission,
   restore, paywall disclosure, Terms and Privacy links, loot box odds, ads
   and ATT.

@@ -1,4 +1,4 @@
-# Rule facts snapshot (as of 2026-11-06)
+# Rule facts snapshot (as of 2026-11-07)
 
 Re-verify every run in Phase 0.
 
@@ -9,6 +9,12 @@ look for, not so you can skip Phase 0.
   added rules on creative assets (no specific or discounted pricing, no
   unverifiable claims) and on hidden, dormant or undocumented features.
   June 8, 2026 clarified the spam rules for crowded categories.
+- Guideline 4.3 (October 16, 2026 text) has two parts: (a) no multiple
+  bundle ids of the same app, (b) no apps indistinguishable from what is
+  already widely available. It names dating, flashlight, sound effects,
+  wallpaper, simple timers and fortune telling as categories that need a
+  meaningfully different experience. 4.1(c) bars another developer's icon,
+  brand or product name in an app's icon or name without approval.
 - Apple uploads require Xcode 26 and the iOS 26 SDK (since 2026-04-28); the
   iOS 27 SDK is announced for April 2027. Minimum deployment target iOS 13
   (since 2026-09-09).

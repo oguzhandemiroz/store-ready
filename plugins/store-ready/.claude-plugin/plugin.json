@@ -1,6 +1,6 @@
 {
   "name": "store-ready",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Pre-submission review audit for App Store and Google Play releases: a skill and an agent.",
   "author": {
     "name": "Oğuzhan Demiröz",

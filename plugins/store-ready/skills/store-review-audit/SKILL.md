@@ -173,7 +173,8 @@ Then gather the context:
 - **Features that carry rules:** accounts or sign-in, IAP, subscriptions,
   ads, paid random rewards, user-generated content or chat, AI-generated
   content, health, finance or medical claims, location, camera or
-  microphone, kids audience, web views, external purchase links.
+  microphone, kids audience, web views, external purchase links, and
+  whether the app recreates or is inspired by an existing app or game.
 - **Project rules:** `CLAUDE.md`, `AGENTS.md`, `README`, release or
   submission checklists, previous audit reports, ASO or copy rules, banned
   word lists. The project's own rules are checks too: if the project bans a
