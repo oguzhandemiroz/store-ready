@@ -121,6 +121,10 @@ If the release includes Android:
 11. https://support.google.com/googleplay/android-developer/answer/9893335
     (Families, if children may be in the audience)
 
+If your fetch tool returns a summary instead of the page, read the "Last
+Updated" date and any guideline you cite from the raw page (for example
+`curl -sL <url>` and search the text), so the date and wording are exact.
+
 Apple `developer.apple.com/documentation/...` pages often render empty for
 automated fetches. The same content is usually at
 `developer.apple.com/tutorials/data/documentation/<path>.json`.
