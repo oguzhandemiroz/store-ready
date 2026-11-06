@@ -70,9 +70,11 @@ Store Connect?"
 - Search first: the repo, store metadata folders, config, docs, and the
   audit folder's `answers.md`. Ask only what you could not find.
 - Ask at most 4 questions at a time, each short, each saying why you need it.
-- If you have an `AskUserQuestion` tool, use it and continue with the
-  answers.
-- If you cannot ask (for example you run as a subagent), do not stall.
+- If your agent has a tool for asking the user questions (for example
+  `AskUserQuestion` in Claude Code), use it. In an interactive chat without
+  one, ask in a normal message and wait for the answer.
+- If you cannot ask at all (for example you run as a subagent or in a
+  background task), do not stall.
   Finish every check you can, mark the dependent checks `UNVERIFIED`, and put
   the questions at the very top of your reply under **Questions** so the
   caller can relay them. When rerun with answers, continue from there.

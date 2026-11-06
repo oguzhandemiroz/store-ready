@@ -1,13 +1,16 @@
 # store-ready
 
-Claude Code tools for shipping mobile apps to the App Store and Google Play.
+Agent skills for shipping mobile apps to the App Store and Google Play. They
+use the open `SKILL.md` format, so they work in Claude Code, Codex, Cursor,
+Grok Build, Muse Code, Manus, Gemini CLI, GitHub Copilot and other agents
+that read skills.
 
 https://github.com/user-attachments/assets/83bde746-f8e0-48e1-a1f8-735a526958ec
 
-| Tool | Type | What it does |
-|---|---|---|
-| `store-review-audit` | skill | Audits a release before you submit it for review and lists what could get it rejected. |
-| `store-review-auditor` | agent | Runs the same audit in its own context, so a long audit does not fill your conversation. |
+| Tool | Type | Works in | What it does |
+|---|---|---|---|
+| `store-review-audit` | skill | any agent that reads `SKILL.md` | Audits a release before you submit it for review and lists what could get it rejected. |
+| `store-review-auditor` | agent | Claude Code | Runs the same audit in its own context, so a long audit does not fill your conversation. |
 
 ## store-review-audit
 
@@ -83,10 +86,10 @@ privacy policy in this repo. What is its URL?"
 
 ### Let your AI assistant install it
 
-Copy this into Claude Code, Codex, Cursor or another coding agent:
+Copy this into whichever coding agent you use:
 
 ```text
-Install the store-ready tools from https://github.com/oguzhandemiroz/store-ready for me.
+Install the store-review-audit skill from https://github.com/oguzhandemiroz/store-ready for me.
 
 - If you are Claude Code, run these two commands in the shell:
   claude plugin marketplace add oguzhandemiroz/store-ready
@@ -97,37 +100,48 @@ Install the store-ready tools from https://github.com/oguzhandemiroz/store-ready
 - If you are any other coding agent, run:
   npx skills add oguzhandemiroz/store-ready
   and pick the agent I am using when it asks.
+- If you cannot run commands, copy the folder plugins/store-ready/skills/store-review-audit
+  from the repo into the folder where you load skills from.
 - Do not change anything else in my project or settings.
 - When done, show me what was installed and how to start an audit.
 ```
 
-### Claude Code, by hand
+### Claude Code
 
 ```text
 /plugin marketplace add oguzhandemiroz/store-ready
 /plugin install store-ready@store-ready
 ```
 
-From the shell:
+This installs the skill and the agent.
 
-```sh
-claude plugin marketplace add oguzhandemiroz/store-ready
-claude plugin install store-ready@store-ready
-```
-
-### Other agents, with skills.sh
+### Codex, Cursor, Grok Build, Gemini CLI, Copilot and others
 
 ```sh
 npx skills add oguzhandemiroz/store-ready
 ```
 
-This installs the skill. The agent is Claude Code only.
+[skills.sh](https://skills.sh) asks which agent you use and puts the skill in
+that agent's skills folder. Inside a project, Codex and Cursor read
+`.agents/skills/`.
 
-### Manual copy
+### Muse Code
 
-Copy `plugins/store-ready/skills/store-review-audit/` into
-`~/.claude/skills/`, and `plugins/store-ready/agents/store-review-auditor.md`
-into `~/.claude/agents/`.
+Install with `npx skills add` and choose Codex or Universal, which writes to
+`.agents/skills/`, or choose Claude Code. Muse Code also lists skills from
+those folders.
+
+### Manus
+
+Download `store-review-audit.zip` from the
+[latest release](https://github.com/oguzhandemiroz/store-ready/releases/latest)
+and upload it under Skills, Add, Upload a skill.
+
+### Any other agent
+
+Copy `plugins/store-ready/skills/store-review-audit/` into the folder your
+agent loads skills from. The folder is self-contained: `SKILL.md` and its
+`references/`.
 
 ## Use
 
@@ -137,23 +151,25 @@ In your app's repo, before you submit, say:
 audit this release before I submit
 ```
 
-or run the skill directly with `/store-ready:store-review-audit`. It works
-out the platform, version and build, confirms them with you, and asks the
-rest as it goes.
+or call the skill by name the way your agent does it (in Claude Code,
+`/store-ready:store-review-audit`). It works out the platform, version and
+build, confirms them with you, and asks the rest as it goes.
 
-To run it in its own context:
+In Claude Code you can also run it in its own context:
 
 ```sh
 claude --agent store-review-auditor
 ```
 
-When the agent is started from inside another session, it cannot ask
-questions as it goes. It does every check it can and puts its questions at
-the top of its reply.
+In other agents, start the skill in a subagent or background task if your
+agent has one. When the audit runs where it cannot ask you questions, it
+does every check it can and puts its questions at the top of its reply.
 
 It works best when it can see the real build (`.ipa`, `.xcarchive`, `.aab`)
 and your store metadata (for example `fastlane/metadata`). Without them it
-marks those checks as unverified.
+marks those checks as unverified. It needs a shell or a web fetch tool to
+re-read the store rules; without one it says so and falls back to its dated
+snapshot.
 
 ## Limits
 
@@ -169,8 +185,9 @@ marks those checks as unverified.
 
 The skill tells the model never to edit your code, upload, submit, change
 store settings, run git writes or open secrets (`.env`, `.p8`, keystores).
-These are written instructions, not a sandbox. For a hard guarantee, add deny
-rules to your `.claude/settings.json`, for example:
+These are written instructions, not a sandbox. For a hard guarantee, use your
+agent's own permission settings. In Claude Code, add deny rules to
+`.claude/settings.json`, for example:
 
 ```json
 {
@@ -186,6 +203,9 @@ rules to your `.claude/settings.json`, for example:
   }
 }
 ```
+
+Other agents have their own approval or sandbox modes. Run the audit in a
+read-only or ask-before-running mode if yours has one.
 
 ## Contributing
 

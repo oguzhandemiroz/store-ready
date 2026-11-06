@@ -1,7 +1,7 @@
 {
   "name": "store-ready",
-  "version": "0.2.0",
-  "description": "Pre-submission review audit for App Store and Google Play releases: a skill and an agent.",
+  "version": "0.2.1",
+  "description": "Pre-submission review audit for App Store and Google Play releases: a skill for any agent and a Claude Code agent.",
   "author": {
     "name": "Oğuzhan Demiröz",
     "url": "https://github.com/oguzhandemiroz"
@@ -9,5 +9,15 @@
   "homepage": "https://github.com/oguzhandemiroz/store-ready",
   "repository": "https://github.com/oguzhandemiroz/store-ready",
   "license": "MIT",
-  "keywords": ["app-store", "app-review", "google-play", "ios", "android", "release"]
+  "keywords": [
+    "agent-skills",
+    "android",
+    "app-review",
+    "app-store",
+    "codex",
+    "cursor",
+    "google-play",
+    "ios",
+    "release"
+  ]
 }
