@@ -2,6 +2,9 @@
 
 Claude Code tools for shipping mobile apps to the App Store and Google Play.
 
+https://github.com/user-attachments/assets/e7edb808-0557-4cfe-a258-dcb8a7f8a838
+
+
 | Tool | Type | What it does |
 |---|---|---|
 | `store-review-audit` | skill | Audits a release before you submit it for review and lists what could get it rejected. |
