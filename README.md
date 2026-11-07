@@ -137,6 +137,13 @@ Download `store-review-audit.zip` from the
 [latest release](https://github.com/oguzhandemiroz/store-ready/releases/latest)
 and upload it under Skills, Add, Upload a skill.
 
+### Agensi
+
+The skill is also listed free on
+[Agensi](https://www.agensi.io/skills/store-review-audit-app-store-google-play),
+which serves it to agents connected through its MCP server. This repo is the
+source, and the Agensi copy can lag behind it.
+
 ### Any other agent
 
 Copy `plugins/store-ready/skills/store-review-audit/` into the folder your
