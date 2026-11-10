@@ -39,14 +39,15 @@ errors.
   upcoming upload requirements, the SDK privacy manifest list and Google
   Play's policy pages, and tells you what changed since the last audit.
 - **Binary:** SDK and Xcode version, purpose strings for every linked
-  protected API, privacy manifests, export compliance, icon alpha channel,
+  protected API and whether each one says what the app does with it,
+  privacy manifests, export compliance, icon alpha channel,
   iPad orientations, entitlements, private URL schemes, debug leftovers, and
   whether the build is older than your last fix.
 - **Android:** target API level, merged manifest permissions against Data
   safety, iOS-only screens leaking into Android, closed testing for new
   accounts.
-- **Completeness:** every advertised feature exists, nothing says "coming
-  soon", demo account, hidden or remotely switchable features, permission
+- **Completeness:** every advertised feature exists, the paywall and IAP
+  copy sell only what the build has, nothing says "coming soon", demo account, hidden or remotely switchable features, permission
   prompt timing and wording.
 - **Originality (4.1, 4.2, 4.3):** searches the App Store for the closest
   apps and your own catalog, then compares name, icon and screenshots for
@@ -60,10 +61,12 @@ errors.
   rating, EU DSA trader status.
 - **Metadata:** every locale, character limits, prices or platform names in
   copy, screenshot accuracy and duplicates, empty fields after a new version,
-  support and marketing pages.
+  support and marketing pages, and every Terms and Privacy link in the app
+  and the listing opened and read.
 - **Submission state:** no other version in review, the right build, every
-  item attached, review notes that match the build, contact info, release
-  type.
+  item attached, review notes that match the build and show the reviewer
+  where each permission is used, a hardware video when one is required,
+  contact info, release type.
 
 It also reads your project's own rules (`CLAUDE.md`, checklists, banned word
 lists) and enforces them.

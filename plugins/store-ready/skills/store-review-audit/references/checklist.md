@@ -22,6 +22,16 @@ files describe intent; the binary is the truth.
   frameworks in; a disabled config flag does not remove them). Every purpose
   string must describe a real use. A string for an API the app never uses is
   a finding too.
+- **Purpose string wording (5.1.1(ii)):** read every string in every
+  language against Apple's current guidance at
+  https://developer.apple.com/help/app-review/guideline-reference/5-1-1-purpose-strings.
+  Each string names the feature that uses the resource and what the app
+  does with it, with a concrete example, in one complete sentence. A string
+  that only restates the resource ("To use the camera."), promises a vague
+  benefit ("to provide a better experience"), hides who uses the data
+  behind a passive sentence, or reads like marketing copy is a **RISK**.
+  Quote each weak string in the report with a rewrite that uses only what
+  the code actually does.
 - **Privacy manifests:** `PrivacyInfo.xcprivacy` exists for the app; every
   required-reason API the app or its SDKs use is declared with a valid reason
   code. Take the categories and codes from Apple's current page, not memory.
@@ -82,6 +92,15 @@ files describe intent; the binary is the truth.
 
 - Every feature named in the description, screenshots, promo text, preview
   video, What's New and review notes exists in this build and works.
+- **In-app selling copy matches the build.** Read the paywall, onboarding,
+  upgrade prompts, and every IAP and subscription display name, description
+  and review screenshot. List each feature they sell or promise, then find
+  it in the code. Start with the features removed or renamed since the live
+  version (`git log` for deleted screens, routes and strings): a feature cut
+  from the app often stays on the paywall. A paid tier that sells a feature
+  the build does not have is a **BLOCKER**: 3.1.2(c) asks that the paywall
+  say clearly what the user gets for the price (cite the number from the
+  live page).
 - Nothing unfinished is visible: no "coming soon", locked placeholder
   options, empty states that look broken, dead buttons, broken links.
 - Backend and remote content are live for the review period.
@@ -248,6 +267,17 @@ Read every locale, not only the primary one.
 - **URLs:** support URL loads and shows a way to contact the developer;
   marketing URL page is finished (no "work in progress") and claims only
   shipped features; privacy URL loads. Fetch each one.
+- **Legal links, inside the app too:** collect every Terms of Use (EULA),
+  Privacy Policy and support URL from the store metadata (description, EULA
+  field, privacy URL) **and** from the app (search the source and the
+  binary's strings for `http`; check the paywall, settings, onboarding and
+  sign-up screens). Fetch each one and check that it loads with no 404,
+  login wall or parked domain, that it is the real document and not a
+  homepage it redirects to, that it names this app and not another one or a
+  template, and that the app and the store point to the same documents. A
+  broken or wrong legal link on a subscription paywall is a **BLOCKER**
+  (see the paywall disclosure check in Phase 5 and Apple's subscriptions
+  page, SKILL.md Phase 0, item 7); elsewhere it is a **RISK**.
 - **In-App Events and Game Center:** event deep links open the right screen;
   leaderboards and achievements that the listing promotes are attached to
   this submission.
@@ -274,6 +304,23 @@ Otherwise ask the user to confirm each item or paste/screenshot the page.
   changed in this version, external services used (ads, analytics,
   payments, AI), and anything that might look odd (a privacy cover screen,
   a feature that needs special hardware). The notes match this build exactly.
+  Compare them with Apple's current "Provide information for a complete
+  review" page (SKILL.md Phase 0, item 5), which also asks for the devices
+  and OS versions tested, regional differences, and any authentication code
+  in advance. Apple says incomplete submissions are rejected.
+- **Sensitive permissions in the notes:** for every protected resource the
+  app requests (camera, microphone, location, Bluetooth, local network,
+  health, contacts, tracking), the notes say which screen asks for it, the
+  steps to get there, and what the reviewer should see happen. A permission
+  the reviewer cannot trigger from the notes is a **RISK**.
+- **Video:** if the app needs external hardware, Apple's complete-review
+  page asks for a video of the app running on a physical Apple device as it
+  pairs with and uses the hardware, and says a screen recording does not
+  count. Flag it as a **BLOCKER** when it is missing. For features that are
+  hard to reach or depend on sensors or the environment, suggest a short
+  video linked in the notes; the guidelines ask for "supporting
+  documentation where appropriate". Attach it in the App Review Information
+  section or link it in the notes.
 - **Contact info** (name, phone, email) is filled and current.
 - **Release type** (manual, automatic, phased) is what the user intends.
 - Tooling that writes metadata (e.g. `deliver`) can overwrite review notes or
@@ -281,7 +328,12 @@ Otherwise ask the user to confirm each item or paste/screenshot the page.
   its config for review information and release settings and warn if it will
   clobber what is in the console.
 - A long time in "Waiting for Review" is normal. Do not recommend withdrawing
-  a submission just because it is slow.
+  a submission just because it is slow. If a review runs far past the times
+  Apple states on its "Request an expedited review" page
+  (https://developer.apple.com/help/app-review/after-submitting-for-review/request-expedited-review),
+  the routes are Contact App Review, or an expedited review for a genuine
+  urgency (a critical bug fix or a dated event, explained in the Notes).
+  Read the current wording; do not promise a timeline.
 
 ## Phase 9: Play Console state (if Android is in this release)
 

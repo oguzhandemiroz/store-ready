@@ -48,3 +48,7 @@ section so the project can learn from them.
     layout bug, a missing IAP) can come back with a 4.3 or a 2.1(b) it did
     not get the first time. After a fix, rerun the whole audit, not only the
     fixed item.
+20. A feature removed from the app stays on the paywall. A pre-submission
+    audit caught a paywall still selling a checklist that had been cut two
+    days earlier. Diff the paywall and IAP copy against the build, starting
+    with what was removed since the live version.
